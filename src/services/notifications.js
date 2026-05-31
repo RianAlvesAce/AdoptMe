@@ -1,13 +1,12 @@
-import * as Notifications from 'react-notification';
+import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 Notifications.setNotificationHandler({
-    handleNotification: async (notification) => ({
+    handleNotification: async () => ({
         shouldShowBanner: true,
         shouldShowList: true,
         shouldPlaySound: true,
-        shouldShowBadge: false,
-        X
+        shouldSetBadge: false,
     }),
 });
 
@@ -21,22 +20,21 @@ export async function requestPermissions() {
             await Notifications.requestPermissionsAsync();
         finalStatus = status;
     }
-}
 
-if (finalStatus !== 'granted') {
-    alert('Permissão para notificações negada!');
-    return false;
-}
+    if (finalStatus !== 'granted') {
+        alert('Permissão para notificações negada!');
+        return false;
+    }
 
-if (Platform.OS === 'android') {
-    await Notifications.setNotificationChannelAsync('default', {
-        name: 'Default',
-        importance: Notifications.AndroidImportance.MAX,
-    });
+    if (Platform.OS === 'android') {
+        await Notifications.setNotificationChannelAsync('default', {
+            name: 'Default',
+            importance: Notifications.AndroidImportance.MAX,
+        });
+    }
+    return true;
 }
-return true;
-
-export async function sendtPetNotification() {
+export async function sendPetNotification() {
     const hasPermission = await requestPermissions();
     if (!hasPermission) return;
 
