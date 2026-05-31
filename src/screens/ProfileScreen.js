@@ -8,7 +8,14 @@ import {
     ScrollView,
 } from 'react-native';
 
+import { sendPetNotification } from '../services/notifications';
+
 export default function ProfileScreen() {
+
+    const handleSendNotification = async () => {
+        await sendPetNotification();
+    };
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
 
@@ -42,7 +49,9 @@ export default function ProfileScreen() {
 
             </View>
 
-            <TouchableOpacity style={styles.notificationButton}>
+            <TouchableOpacity
+                style={styles.notificationButton}
+                onPress={handleSendNotification}>
                 <Text style={styles.notificationButtonText}>
                     Testar Notificação
                 </Text>
