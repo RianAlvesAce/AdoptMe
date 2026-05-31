@@ -1,5 +1,5 @@
 import React from 'react';
-import Galeria from './screens/galeria';
+import Galeria from './src/screens/galeria';
 
 export default function App() {
   return (
