@@ -1,10 +1,11 @@
 import { useState } from "react";
-import {FlatList,Image,StyleSheet, Text,TextInput,TouchableOpacity,View,
+import {
+  FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View,
 } from "react-native";
-export default function HomeScreen() {
+export default function Animais({ onFavoritar, listaFavoritos, irParaFavoritos }) {
   const [busca, setBusca] = useState("");
   const animais = [
-    
+
     {
       id: "1",
       nome: "Mel",
@@ -30,7 +31,7 @@ export default function HomeScreen() {
       sexo: "Macho",
       porte: "Grande porte",
       tipo: "Cachorro",
-      foto:  require("../assets/thor.png"),
+      foto: require("../assets/thor.png"),
     },
     {
       id: "4",
@@ -49,7 +50,7 @@ export default function HomeScreen() {
       porte: "Pequeno porte",
       tipo: "Cachorro",
       foto: require("../assets/anil.png"),
-    }, 
+    },
 
   ];
   const animaisFiltrados = animais.filter((animal) =>
@@ -57,7 +58,13 @@ export default function HomeScreen() {
   );
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Adote amor, mude vidas!</Text>
+      {/* Barra superior que junta o título e o botão de favoritos */}
+      <View style={styles.header}>
+        <Text style={styles.titulo}>Adote amor!</Text>
+        <TouchableOpacity style={styles.botaoFav} onPress={irParaFavoritos}>
+          <Text style={styles.textoBotaoFav}>❤️ Favoritos ({listaFavoritos.length})</Text>
+        </TouchableOpacity>
+      </View>
       <Text style={styles.subtitulo}>Encontre seu novo melhor amigo</Text>
 
       <TextInput
@@ -82,10 +89,12 @@ export default function HomeScreen() {
               <Text style={styles.tipo}> {item.tipo} </Text>
             </View>
 
-            <TouchableOpacity>
-              <Text style={styles.coracao}>❤</Text>
+            <TouchableOpacity onPress={() => onFavoritar(item)}>
+              <Text style={styles.coracao}>
+                {listaFavoritos.some(fav => fav.id === item.id) ? "❤️" : "🤍"}
+              </Text>
             </TouchableOpacity>
-          
+
           </View>
         )}
       />
@@ -103,6 +112,23 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     color: "#1B5E20",
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  botaoFav: {
+    backgroundColor: '#FFE0B2',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  textoBotaoFav: {
+    color: '#E65100',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
   subtitulo: {
     fontSize: 16,

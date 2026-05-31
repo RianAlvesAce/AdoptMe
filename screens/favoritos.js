@@ -1,59 +1,79 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
-import { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 
-export default function Favoritos() {
-  const [favoritos, setfavoritos] = useState([]);
-
-  const adicionarFavorito = (pet) => {
-    setfavoritos([...favoritos, pet]);
-  }
-
+// Recebe "irParaAnimais" para conseguir voltar
+export default function Favoritos({ listaFavoritos, irParaAnimais }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Favoritos</Text>
+      {/* Botão simples de voltar no topo da tela de Favoritos */}
+      <TouchableOpacity style={styles.botaoVoltar} onPress={irParaAnimais}>
+        <Text style={styles.textoVoltar}>⬅ Voltar para adoção</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.title}>Meus Favoritos</Text>
       
-      <FlatList
-        data={favoritos}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-         
-         <View style={styles.petContainer}>
-            <Image source={{ uri: item.imagem }} style={styles.petImage} />
-            <Text style={styles.petName}>{item.nome}</Text>
-          </View>
-        )}
-      />
+      {listaFavoritos.length === 0 ? (
+        <Text style={styles.textoVazio}>Nenhum pet favoritado ainda. 🤍</Text>
+      ) : (
+        <FlatList
+          data={listaFavoritos}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.petContainer}>
+              <Image source={item.foto} style={styles.petImage} />
+              <Text style={styles.petName}>{item.nome}</Text>
+            </View>
+          )}
+        />
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: '#fffdfa',
-      paddingTop: 50,
-    },
-
-   title : {
-      textAlign: 'center',
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginTop: 50,
-      marginBottom: 25,
-      color: 'green'
-   },
-
-    petContainer :{
-        width: 150,
-        height: 150
-    },
-
-    petName :{
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginTop: 5
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#fffdfa',
+    padding: 20,
+    paddingTop: 50,
+  },
+  botaoVoltar: {
+    marginBottom: 15,
+    alignSelf: 'flex-start',
+  },
+  textoVoltar: {
+    color: '#1B5E20',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 25,
+    color: 'green',
+  },
+  textoVazio: {
+    textAlign: 'center',
+    color: '#666',
+    marginTop: 40,
+    fontSize: 16,
+  },
+  petContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F9F9F9',
+    padding: 10,
+    borderRadius: 12,
+    marginBottom: 15,
+  },
+  petImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+  },
+  petName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 15,
+  },
 });
