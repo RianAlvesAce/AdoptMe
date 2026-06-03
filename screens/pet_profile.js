@@ -1,8 +1,9 @@
 import { Dot, ShieldCheck, BugOff, HeartPulse, Microchip, ImageIcon, ImagesIcon, Send, ArrowLeft, Share2, Heart } from "lucide-react-native";
 import React from "react";
 import { Image, StyleSheet, View, Text, Touchable, TouchableOpacity } from "react-native";
+import DogInformation from "../components/DogInformation";
 
-export default function PetProfile() {
+export default function PetProfile({navigation}) {
 
     const dogInfos = {
         name: "Mel",
@@ -20,7 +21,9 @@ export default function PetProfile() {
     return (
         <View style={{width: "100%", height: "100%"}}>
             <View style={styles.btnContainer}>
+              <TouchableOpacity onPress={() => {navigation.goBack()}}>
                 <ArrowLeft/>
+              </TouchableOpacity>
                 <View style={{display: "flex", flexDirection: "row", gap: 20}}>
                     <Share2/>
                     <Heart/>
@@ -50,47 +53,23 @@ export default function PetProfile() {
                         <Text>{dogInfos.about}</Text>
                     </View>
                     <View style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: 25}}>
-                        <View style={{display: "flex", alignItems: "center", paddingHorizontal: 10}}>
-                            <View style={{backgroundColor:"#c3e6b8", padding: 5, borderRadius: "100%", marginBottom: 5}}>
-                                <ShieldCheck color={"#0b3b00"}/>
-                            </View>
-                            <Text>Vacinada</Text>
-                            <Text>{dogInfos.vaccinated ? "Sim" : "Não"}</Text>
-                        </View>
+                        <DogInformation title="Vacinada" value={dogInfos.vaccinated} Icon={ShieldCheck} />
+                        <View style={{height: "100%", backgroundColor: "#ededed", width: 1.5}}></View>
+                        <DogInformation title="Vermifugada" value={dogInfos.dewormed} Icon={BugOff} />
                         <View style={{height: "100%", backgroundColor: "#ededed", width: 1}}></View>
-                        <View style={{display: "flex", alignItems: "center", paddingHorizontal: 10}}>
-                            <View style={{backgroundColor:"#c3e6b8", padding: 5, borderRadius: "100%", marginBottom: 5}}>
-                                <BugOff color={"#0b3b00"}/>
-                            </View>
-                            <Text>Vermifugada</Text>
-                            <Text>{dogInfos.dewormed ? "Sim" : "Não"}</Text>
-                        </View>
+                        <DogInformation title="Castrada" value={dogInfos.castrated} Icon={HeartPulse} />
                         <View style={{height: "100%", backgroundColor: "#ededed", width: 1}}></View>
-                        <View style={{display: "flex", alignItems: "center", paddingHorizontal: 10}}>
-                            <View style={{backgroundColor:"#c3e6b8", padding: 5, borderRadius: "100%", marginBottom: 5}}>
-                                <HeartPulse color={"#0b3b00"}/>
-                            </View>
-                            <Text>Castrada</Text>
-                            <Text>{dogInfos.castrated ? "Sim" : "Não"}</Text>
-                        </View>
-                        <View style={{height: "100%", backgroundColor: "#ededed", width: 1}}></View>
-                        <View style={{display: "flex", alignItems: "center", paddingHorizontal: 10}}>
-                            <View style={{backgroundColor:"#c3e6b8", padding: 5, borderRadius: "100%", marginBottom: 5}}>
-                                <Microchip color={"#0b3b00"}/>
-                            </View>
-                            <Text>Microchip</Text>
-                            <Text>{dogInfos.microchip ? "Sim" : "Não"}</Text>
-                        </View>
+                        <DogInformation title="Microchip" value={dogInfos.microchip} Icon={Microchip} />
                     </View>
 
-                    <View style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", height: "40%", gap: 15}}>
-                        <TouchableOpacity style={{flex: 1}}>
+                    <View style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", height: "40%", gap: 15, paddingBottom: 100}}>
+                        <TouchableOpacity style={{flex: 1}} onPress={() => {navigation.navigate('Gallery')}}>
                             <View style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", borderWidth: 2, borderColor: "#115202", paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10}}>
                                 <ImagesIcon color={"#115202"} size={20}/> 
                                 <Text style={{color: "#115202", fontWeight: "bold", fontSize: 16}}>Ver galeria</Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{flex: 1}}>
+                        <TouchableOpacity style={{flex: 1}} onPress={() => {navigation.navigate('Form')}}>
                             <View style={{display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center", borderWidth: 1, borderColor: "#115202", backgroundColor: "#115202", paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10}}>
                                 <Send color={"#fff"} size={20}/>
                                 <Text style={{color: "#fff", fontWeight: "bold", fontSize: 16}}>Quero adotar</Text>
@@ -132,7 +111,7 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         width: "100%",
-        height: "45%",
+        height: "100%",
         backgroundColor: "#fff",
         topLine: {
             backgroundColor:"#fff", 
