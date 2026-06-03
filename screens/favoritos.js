@@ -1,10 +1,9 @@
-import React from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 
-export default function Favoritos({ listaFavoritos, irParaAnimais }) {
+export default function Favoritos({ listaFavoritos = [], navigation }) {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.botaoVoltar} onPress={irParaAnimais}>
+            <TouchableOpacity style={styles.botaoVoltar} onPress={() => { navigation.goBack() }}>
                 <Text style={styles.textoVoltar}>⬅ Voltar para adoção</Text>
             </TouchableOpacity>
 

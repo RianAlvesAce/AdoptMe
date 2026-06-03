@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { User } from "lucide-react-native";
 import {
-  FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View,
+  FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View, Button,
 } from "react-native";
 
-export default function Animais({ onFavoritar, listaFavoritos, irParaFavoritos }) {
+export default function Animais({ onFavoritar, listaFavoritos = [], navigation }) {
   const [busca, setBusca] = useState("");
   const animais = [
     {
@@ -59,9 +60,14 @@ export default function Animais({ onFavoritar, listaFavoritos, irParaFavoritos }
 
   return (
     <View style={styles.container}>
+      <View style={{ position: "absolute", right: 20, bottom: 75, backgroundColor: "#1B5E20", borderRadius: "100%", padding: 15, zIndex: 1 }}>
+        <TouchableOpacity onPress={() => {navigation.navigate("ProfileScreen")}}>
+          <User color="#fff" size={40} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.header}>
         <Text style={styles.titulo}>Adote amor!</Text>
-        <TouchableOpacity style={styles.botaoFav} onPress={irParaFavoritos}>
+        <TouchableOpacity style={styles.botaoFav} onPress={() => {navigation.navigate("Favorites")}}>
           <Text style={styles.textoBotaoFav}>❤️ Favoritos ({listaFavoritos.length})</Text>
         </TouchableOpacity>
       </View>
@@ -78,7 +84,7 @@ export default function Animais({ onFavoritar, listaFavoritos, irParaFavoritos }
         data={animaisFiltrados}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={() => {navigation.navigate("PetProfile")}}>
             <Image source={item.foto} style={styles.imagem} />
             <View style={styles.info}>
               <Text style={styles.nome}>{item.nome}</Text>
@@ -93,7 +99,7 @@ export default function Animais({ onFavoritar, listaFavoritos, irParaFavoritos }
               </Text>
             </TouchableOpacity>
 
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
