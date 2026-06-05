@@ -40,27 +40,27 @@ npx expo install expo-image-picker
 ````npx expo start````
 
 ## Screenshots do app funcionando
-**Tela Principal com flatList de animais**
-<img src="./assets/imgReadme/animais.jpeg" alt="Formulário de Adoção" width="200px" />
+<h3>Tela Principal com flatList de animais</h3>
+<img src="./assets/imgReadme/animais.jpeg" alt="flatList de animais" width="200px" />
 
-**Tela com favoritos**
-![](./assets/imgReadme/favoritos.jpeg)
+<h3>Tela com favoritos</h3>
+<img src="./assets/imgReadme/favoritos.jpeg" alt="favoritos" width="200px" />
 
-**Formulario de adoção**
-![](./assets/imgReadme/formulario.jpeg)
+<h3>Formulario de adoção</h3>
+<img src="./assets/imgReadme/formulario.jpeg" alt="Formulário de Adoção" width="200px" />
 
-**Galeria e camera**
-![](./assets/imgReadme/galeria2.jpeg)
-![](./assets/imgReadme/galeria1.jpeg)
+<h3>Galeria e camera</h3>
+<img src="./assets/imgReadme/galeria2.jpeg" alt="Camera" width="200px" />
+<img src="./assets/imgReadme/galeria1.jpeg" alt="Galeria" width="200px" />
 
-**Localização de Ongs proximas**
-![](./assets/imgReadme/localizacao.jpeg)
+<h3>Localização de Ongs proximas</h3>
+<img src="./assets/imgReadme/localizacao.jpeg" alt="Localização de Ongs" width="200px" />
 
-**Perfil dos animais**
-![](./assets/imgReadme/petPerfil.jpeg)
+<h3>Perfil dos animais</h3>
+<img src="./assets/imgReadme/petPerfil.jpeg" alt="Perfil dos animais" width="200px" />
 
-**Perfil dos usuários**
-![](./assets/imgReadme/userPerfil.jpeg)
+<h3>Perfil dos usuários</h3>
+<img src="./assets/imgReadme/userPerfil.jpeg" alt="Perfil dos usuários" width="200px" />
 
 ## Nome completo e matrícula
 - Bruna Freitas da Silva (01832048)
