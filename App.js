@@ -7,6 +7,7 @@ import Formulario from './screens/formulario';
 import Galeria from './screens/galeria';
 import PetProfile from './screens/pet_profile';
 import ProfileScreen from './screens/ProfileScreen';
+import ONGsRecife from './screens/geolocalizacao';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Favorites" component={Favoritos} options={{ headerShown: false }}/>
         <Stack.Screen name="PetProfile" component={PetProfile} options={{ headerShown: false }}/>
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Localizacao" component={ONGsRecife} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>    
   );

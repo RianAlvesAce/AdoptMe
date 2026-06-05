@@ -52,6 +52,24 @@ export default function Animais({ onFavoritar, listaFavoritos = [], navigation }
       tipo: "Cachorro",
       foto: require("../assets/anil.png"),
     },
+    {
+      id: "1",
+      nome: "Lulu",
+      idade: "2 anos",
+      sexo: "fêmea",
+      porte: "Médio porte",
+      tipo: "Cachorro",
+      foto: require("../assets/mel.png"),
+    },
+    {
+      id: "3",
+      nome: "Bento",
+      idade: "3 anos",
+      sexo: "Macho",
+      porte: "Grande porte",
+      tipo: "Cachorro",
+      foto: require("../assets/thor.png"),
+    },
   ];
 
   const animaisFiltrados = animais.filter((animal) =>
@@ -73,12 +91,13 @@ export default function Animais({ onFavoritar, listaFavoritos = [], navigation }
       </View>
       <Text style={styles.subtitulo}>Encontre seu novo melhor amigo</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Buscar animal..."
-        value={busca}
-        onChangeText={setBusca}
-      />
+      <View style={styles.subArea}>
+        <TextInput style={styles.input} placeholder="Buscar animal..." value={busca} onChangeText={setBusca}/>
+
+       <TouchableOpacity style={styles.botaolocal} onPress={() => {navigation.navigate("Localizacao")}}>
+          <Text style={styles.textoBotaolocal}>📍 Locais </Text>
+        </TouchableOpacity>
+      </View>
 
       <FlatList
         data={animaisFiltrados}
@@ -118,11 +137,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 5,
+    paddingTop: 20,
   },
   titulo: {
     fontSize: 28,
     fontWeight: "bold",
     color: "#1B5E20",
+    paddingBottom:20
   },
   botaoFav: {
     backgroundColor: '#FFE0B2',
@@ -138,15 +159,33 @@ const styles = StyleSheet.create({
   subtitulo: {
     fontSize: 16,
     color: "#555",
-    marginBottom: 20,
   },
+
+  subArea:{
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    padding: 20,
+    alignItems: 'center',
+    paddingLeft: 1,   
+    paddingRight: 5,  
+  },
+
+  botaolocal: {
+    borderColor: 'rgba(27,94,32)',
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 12,
+    marginLeft: 10
+  },
+
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,
     padding: 12,
-    marginBottom: 20,
+    flex:1,
   },
+
   card: {
     flexDirection: "row",
     alignItems: "center",
