@@ -41,7 +41,7 @@ npx expo install expo-image-picker
 
 ## Screenshots do app funcionando
 **Tela Principal com flatList de animais**
-![](./assets/imgReadme/animais.jpeg)
+<img src="./assets/imgReadme/animais.jpeg" alt="Formulário de Adoção" width="400px" />
 
 **Tela com favoritos**
 ![](./assets/imgReadme/favoritos.jpeg)
