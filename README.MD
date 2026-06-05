@@ -40,7 +40,27 @@ npx expo install expo-image-picker
 ````npx expo start````
 
 ## Screenshots do app funcionando
-![](./img/rotas.png)
+**Tela Principal com flatList de animais**
+![](./assets/imgReadme/animais.jpeg)
+
+**Tela com favoritos**
+![](./assets/imgReadme/favoritos.jpeg)
+
+**Formulario de adoção**
+![](./assets/imgReadme/formulario.jpeg)
+
+**Galeria e camera**
+![](./assets/imgReadme/galeria2.jpeg)
+![](./assets/imgReadme/galeria1.jpeg)
+
+**Localização de Ongs proximas**
+![](./assets/imgReadme/localizacao.jpeg)
+
+**Perfil dos animais**
+![](./assets/imgReadme/petPerfil.jpeg)
+
+**Perfil dos usuários**
+![](./assets/imgReadme/userPerfil.jpeg)
 
 ## Nome completo e matrícula
 - Bruna Freitas da Silva (01832048)
