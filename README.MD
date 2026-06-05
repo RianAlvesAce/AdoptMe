@@ -27,10 +27,14 @@ import { Camera } from 'lucide-react-native';
 
 ## Sensores implementados
 **CAMERA**
-````npx expo install expo-image-picker````
+````
+npx expo install expo-image-picker
+````
 
 **GEOLOCALIZAÇÃO**
-```npx expo install expo-location````
+````
+npx expo install expo-location
+````
 
 ## Como instalar
 ```npm install```
